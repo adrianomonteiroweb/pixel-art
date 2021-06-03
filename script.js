@@ -1,77 +1,48 @@
-if (window.attachEvent) {
-  window.attachEvent('onload', general);
-} else {
-  if(window.onload) {
-      var curronload = window.onload;
-      var newonload = function(evt) {
-          curronload(evt);
-          general(evt);
-          
-      };
-      window.onload = newonload;
-  } else {
-      window.onload = general;
-  }
-}
+window.onload = function () {
 
-function general () {
   palettesColors();
-  createTablePixelBoard();
   createLinePixelBoard();
   createColumnPixelBoard();
-  createDivs();
-}
-
-function palettesColors () {
-  let colorsDefinitions = ['black', 'red', 'blue', 'green'];
-  let divsPalettes = document.getElementsByClassName("color");
-  for (let i = 0; i < divsPalettes.length; i += 1) {
-    divsPalettes[i].style.backgroundColor = colorsDefinitions[i];
+  waitEvent();
+  function palettesColors () {
+    let colorsDefinitions = ['black', 'red', 'blue', 'green'];
+    let divsPalettes = document.getElementsByClassName("color");
+    for (let i = 0; i < divsPalettes.length; i += 1) {
+      divsPalettes[i].style.backgroundColor = colorsDefinitions[i];
+      divsPalettes[i].id = colorsDefinitions[i];
+    }
+    let selected = document.getElementById('black');
+    selected.classList.add("selected");
   }
-}
 
-function createTablePixelBoard() {
-  let pixelFrame = document.createElement('div');
-  pixelFrame.className = "pixel";
-  let newTable = document.createElement('table');
-  newTable.id = "id-table";
-  let board = document.getElementById('pixel-board');
-  board.appendChild(newTable);
-}
-
-function createLinePixelBoard() {
-  let heightBoard = 5;
-  let table = document.getElementById('id-table');
-  for (let i = 1; i<= heightBoard; i += 1) {
-    let tr = document.createElement('tr');
-    tr.id = "id-tr-"+i;
-    tr.className = "id-tr";
-    table.appendChild(tr);
+  function createLinePixelBoard() {
+    let pixelBoardDiv = document.getElementById('pixel-board');
+    let divLine = document.createElement('div');
+    divLine.id = "id-div-line";
+    divLine.className = "id-div-line";
+    pixelBoardDiv.appendChild(divLine);
   }
-}
 
-function createColumnPixelBoard() {
-  let widthBoard = 5;
-  for (let i = 1; i <= widthBoard; i += 1) {
-    let tr = document.getElementById('id-tr-'+i);
-    for (let i2 = 1; i2 <= widthBoard; i2 += 1) {
-      let td = document.createElement('td');
-      td.id = "id-td-"+i+i2;
-      td.className = "id-td";
-      tr.appendChild(td);
+  function createColumnPixelBoard() {
+    let boards = 25;
+    for (let i = 1; i <= boards; i += 1) {
+      let divLine = document.getElementById('pixel-board');
+      let divColumn = document.createElement('div');
+      divColumn.id = "id-div-column-"+i;
+      divColumn.className = "pixel";
+      divLine.appendChild(divColumn);
     }
   }
-}
+  
+  function modifyColorSelected(color) {
+    let removeClass = document.querySelector('.selected');
+    removeClass.classList.remove("selected");
+    let selected = document.getElementById(color);
+    selected.classList.add("selected");
+  }
 
-function createDivs() {
-  let widthBoard = 5;
-  for (let i = 1; i <= widthBoard; i += 1) {
-    for (let i2 = 1; i2 <= widthBoard; i2 += 1) {
-      let td = document.getElementById('id-td-'+i+i2);
-      let divs = document.createElement('div');
-      divs.id = "id-div-"+i;
-      divs.className = "pixel";
-      td.appendChild(divs);
-    }
+  function waitEvent() {
+    let eventColor = document.getElementById("color-palette");
+    eventColor.addEventListener("click", function(i){modifyColorSelected(i.target.id)}, false);
   }
 }
