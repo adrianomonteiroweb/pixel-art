@@ -5,6 +5,7 @@ window.onload = function () {
   createColumnPixelBoard();
   waitEvent();
   waitEventToColor();
+  waitControls() 
 
   function palettesColors () {
     let colorsDefinitions = ['black', 'red', 'blue', 'green'];
@@ -57,5 +58,20 @@ window.onload = function () {
   function waitEventToColor() {
     let eventColor = document.getElementById("pixel-board");
     eventColor.addEventListener("click", function(i){toDesign(i.target.id)}, false);
+  }
+
+  function controls(control){
+    let boards = 25;
+    if (control === 'clear-board') {
+      let creaningUp = document.querySelectorAll('.pixel');
+      for (let i = 0; i < boards; i += 1) {
+        creaningUp[i].style.backgroundColor = "white";
+      }
+    }
+  }
+
+  function waitControls() {
+    let eventControl = document.getElementById("controls");
+    eventControl.addEventListener("click", function(i){controls(i.target.id)}, false);
   }
 }
