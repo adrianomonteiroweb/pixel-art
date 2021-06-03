@@ -4,6 +4,8 @@ window.onload = function () {
   createLinePixelBoard();
   createColumnPixelBoard();
   waitEvent();
+  waitEventToColor();
+
   function palettesColors () {
     let colorsDefinitions = ['black', 'red', 'blue', 'green'];
     let divsPalettes = document.getElementsByClassName("color");
@@ -44,5 +46,16 @@ window.onload = function () {
   function waitEvent() {
     let eventColor = document.getElementById("color-palette");
     eventColor.addEventListener("click", function(i){modifyColorSelected(i.target.id)}, false);
+  }
+
+  function toDesign(pixel) {
+    let colorSelected = document.querySelector('.selected');
+    let design = document.getElementById(pixel);
+    design.style.backgroundColor = colorSelected.id;
+  }
+
+  function waitEventToColor() {
+    let eventColor = document.getElementById("pixel-board");
+    eventColor.addEventListener("click", function(i){toDesign(i.target.id)}, false);
   }
 }
