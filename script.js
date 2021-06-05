@@ -1,10 +1,19 @@
 window.onload = function () {
   function palettesColors() {
-    const colorsDefinitions = ['black', 'red', 'blue', 'green'];
+    const colorsDefinitions = ['red', 'blue', 'green', 'orange', 'purple', 'brown', 'pink', 'gray', 'yellow'];
     const divsPalettes = document.getElementsByClassName('color');
     for (let i = 0; i < divsPalettes.length; i += 1) {
-      divsPalettes[i].style.backgroundColor = colorsDefinitions[i];
-      divsPalettes[i].id = colorsDefinitions[i];
+      if (i < 1) {
+        divsPalettes[0].style.backgroundColor = 'black';
+        divsPalettes[0].id = 'black';
+      } else {
+        let n = Math.floor(Math.random()*8);
+        if (n > 4) {
+          n += 1;
+        }
+        divsPalettes[i].style.backgroundColor = colorsDefinitions[n];
+        divsPalettes[i].id = colorsDefinitions[n];
+      }
     }
     const selected = document.getElementById('black');
     selected.classList.add('selected');
