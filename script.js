@@ -12,8 +12,7 @@ window.onload = function () {
   palettesColors();
 
   function createInitialPixelBoard() {
-    let valueInput = document.querySelector('#board-size');
-    let value = parseInt(valueInput.value);
+    let value = 5;
     const widthBoard = document.querySelector('#pixel-board');
     let dynamicWidth = 40 * (value + 0.5);
     dynamicWidth = dynamicWidth.toString();
