@@ -1,13 +1,13 @@
 window.onload = function () {
-  function palettesColors () {
-    let colorsDefinitions = ['black', 'red', 'blue', 'green'];
-    let divsPalettes = document.getElementsByClassName("color");
+  function palettesColors() {
+    const colorsDefinitions = ['black', 'red', 'blue', 'green'];
+    const divsPalettes = document.getElementsByClassName('color');
     for (let i = 0; i < divsPalettes.length; i += 1) {
       divsPalettes[i].style.backgroundColor = colorsDefinitions[i];
       divsPalettes[i].id = colorsDefinitions[i];
     }
-    let selected = document.getElementById('black');
-    selected.classList.add("selected");
+    const selected = document.getElementById('black');
+    selected.classList.add('selected');
   }
   palettesColors();
 
