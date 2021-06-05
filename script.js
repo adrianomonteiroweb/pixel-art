@@ -12,7 +12,7 @@ window.onload = function () {
   palettesColors();
 
   function createInitialPixelBoard() {
-    let value = 5;
+    const value = 5;
     const widthBoard = document.querySelector('#pixel-board');
     let dynamicWidth = 40 * (value + 0.5);
     dynamicWidth = dynamicWidth.toString();
@@ -35,25 +35,27 @@ window.onload = function () {
     }
     let valueInput = document.querySelector('#board-size');
     let value = parseInt(valueInput.value);
-    if (value < 5 || value > 50) {
+    if (value < 5) {
       alert('Permitidos apenas números de 5 a 50.');
-      window.location.reload(false);
+      value = 5;
+    } else if (value > 50) {
+      alert('Permitidos apenas números de 5 a 50.');
+      value = 50;
     } else if (!value) {
       alert('Board inválido!');
       window.location.reload(false);
-    } else {
-      const widthBoard = document.querySelector('#pixel-board');
-      let dynamicWidth = 40 * (value + 0.5);
-      dynamicWidth = dynamicWidth.toString();
-      widthBoard.style.width = dynamicWidth+"px";
-      let boards = value * value;
-      for (let i = 1; i <= boards; i += 1) {
-        let divLine = document.getElementById('pixel-board');
-        let divColumn = document.createElement('div');
-        divColumn.id = "id-div-column-"+i;
-        divColumn.className = "pixel";
-        divLine.appendChild(divColumn);
-      }
+    }
+    const widthBoard = document.querySelector('#pixel-board');
+    let dynamicWidth = 40 * (value + 0.5);
+    dynamicWidth = dynamicWidth.toString();
+    widthBoard.style.width = dynamicWidth+"px";
+    let boards = value * value;
+    for (let i = 1; i <= boards; i += 1) {
+      let divLine = document.getElementById('pixel-board');
+      let divColumn = document.createElement('div');
+      divColumn.id = "id-div-column-"+i;
+      divColumn.className = "pixel";
+      divLine.appendChild(divColumn);
     }
   }
   
