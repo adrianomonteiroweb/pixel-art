@@ -31,7 +31,6 @@ h1 {
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 210px;
   line-height: 0.7;
 }
 
@@ -41,4 +40,24 @@ h1 {
   width: 40px;
   height: 40px;
   display: inline-block;
+}
+
+#controls {
+  margin-top: 10px;
+}
+
+button {
+  border: solid 1px black;
+  border-radius: 10%;
+  padding: 3px;
+}
+
+#controls-2 {
+  margin-top: 10px;
+}
+
+#board-size {
+  width: 40px;
+  border: solid 1px black;
+  padding: 3px;
 }
