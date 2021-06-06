@@ -51,7 +51,7 @@ window.onload = function () {
       deleteItems.remove();
     }
     const valueInput = document.querySelector('#board-size');
-    const value = parseInt(valueInput.value);
+    let value = parseInt(valueInput.value);
     if (value < 5) {
       alert('Permitidos apenas números de 5 a 50.');
       value = 5;
@@ -113,14 +113,13 @@ window.onload = function () {
 
   function waitControls() {
     let eventControl = document.getElementById('controls');
-    eventControl.addEventListener('click', function(i){controls(i.target.id)}, false);
+    eventControl.addEventListener('click', function(i) {controls(i.target.id)}, false);
   }
   waitControls();
 
   function waitRedefine() {
-    let redefineBoard = document.getElementById('generate-board');
+    const redefineBoard = document.getElementById('generate-board');
     redefineBoard.addEventListener('click', createPixelBoard, false);
-
   }
   waitRedefine();
-}
+};
