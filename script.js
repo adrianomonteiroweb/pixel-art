@@ -1,7 +1,7 @@
 window.onload = function () {
   function palettesColors() {
     const colorsDefinitions = ['red', 'blue', 'yellow', 'brown', 'green'];
-    const colorsDefinitions2 = ['purple', 'pink', 'caramel'];
+    const colorsDefinitions2 = ['purple', 'pink'];
     const divsPalettes = document.getElementsByClassName('color');
     const controlColors = [];
     for (let i = 0; i < divsPalettes.length; i += 1) {
@@ -9,13 +9,13 @@ window.onload = function () {
         divsPalettes[0].style.backgroundColor = 'black';
         divsPalettes[0].id = 'black';
       } else {
-        let n = Math.floor(Math.random() * colorsDefinitions.length);
-        let n2 = Math.floor(Math.random() * colorsDefinitions2.length);
-        if (controlColors.indexOf(colorsDefinitions[n]) == -1) {
+        const n = Math.floor(Math.random() * colorsDefinitions.length);
+        const n2 = Math.floor(Math.random() * colorsDefinitions2.length);
+        if (controlColors.indexOf(colorsDefinitions[n]) === -1) {
           controlColors.push(colorsDefinitions[n]);
           divsPalettes[i].style.backgroundColor = colorsDefinitions[n];
           divsPalettes[i].id = colorsDefinitions[n];
-        } else if (controlColors.indexOf(colorsDefinitions2[n2]) == -1) {
+        } else if (controlColors.indexOf(colorsDefinitions2[n2]) === -1) {
           controlColors.push(colorsDefinitions2[n2]);
           divsPalettes[i].style.backgroundColor = colorsDefinitions2[n2];
           divsPalettes[i].id = colorsDefinitions2[n2];
@@ -32,13 +32,13 @@ window.onload = function () {
     const widthBoard = document.querySelector('#pixel-board');
     let dynamicWidth = 40 * (value + 0.5);
     dynamicWidth = dynamicWidth.toString();
-    widthBoard.style.width = dynamicWidth+"px";
-    let boards = value * value;
+    widthBoard.style.width = dynamicWidth + 'px';
+    const boards = value * value;
     for (let i = 1; i <= boards; i += 1) {
-      let divLine = document.getElementById('pixel-board');
-      let divColumn = document.createElement('div');
-      divColumn.id = "id-div-column-"+i;
-      divColumn.className = "pixel";
+      const divLine = document.getElementById('pixel-board');
+      const divColumn = document.createElement('div');
+      divColumn.id = 'id-div-column-' + i;
+      divColumn.className = 'pixel';
       divLine.appendChild(divColumn);
     }
   }
@@ -47,7 +47,8 @@ window.onload = function () {
   function createPixelBoard() {
     const list = document.querySelectorAll('.pixel');
     for (let i = 0; i < list.length; i += 1) {
-      const deleteItems = document.getElementById(list[i].id).remove();
+      const deleteItems = document.getElementById(list[i].id);
+      deleteItems.remove();
     }
     let valueInput = document.querySelector('#board-size');
     let value = parseInt(valueInput.value);
