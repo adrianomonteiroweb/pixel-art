@@ -1,18 +1,25 @@
 window.onload = function () {
   function palettesColors() {
-    const colorsDefinitions = ['red', 'blue', 'green', 'orange', 'purple', 'brown', 'pink', 'gray', 'yellow'];
+    const colorsDefinitions = ['red', 'blue', 'yellow', 'brown', 'green'];
+    const colorsDefinitions2 = ['purple', 'pink', 'caramel'];
     const divsPalettes = document.getElementsByClassName('color');
+    const controlColors = [];
     for (let i = 0; i < divsPalettes.length; i += 1) {
       if (i < 1) {
         divsPalettes[0].style.backgroundColor = 'black';
         divsPalettes[0].id = 'black';
       } else {
-        let n = Math.floor(Math.random()*8);
-        if (n > 4) {
-          n += 1;
+        let n = Math.floor(Math.random() * colorsDefinitions.length);
+        let n2 = Math.floor(Math.random() * colorsDefinitions2.length);
+        if (controlColors.indexOf(colorsDefinitions[n]) == -1) {
+          controlColors.push(colorsDefinitions[n]);
+          divsPalettes[i].style.backgroundColor = colorsDefinitions[n];
+          divsPalettes[i].id = colorsDefinitions[n];
+        } else if (controlColors.indexOf(colorsDefinitions2[n2]) == -1) {
+          controlColors.push(colorsDefinitions2[n2]);
+          divsPalettes[i].style.backgroundColor = colorsDefinitions2[n2];
+          divsPalettes[i].id = colorsDefinitions2[n2];
         }
-        divsPalettes[i].style.backgroundColor = colorsDefinitions[n];
-        divsPalettes[i].id = colorsDefinitions[n];
       }
     }
     const selected = document.getElementById('black');
