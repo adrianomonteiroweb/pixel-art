@@ -1,7 +1,7 @@
 window.onload = function () {
   function palettesColors() {
     const colorsDefinitions = ['red', 'blue', 'yellow', 'brown', 'green'];
-    const colorsDefinitions2 = ['purple', 'pink'];
+    const colorsDefinitions2 = ['purple', 'pink', 'grey'];
     const divsPalettes = document.getElementsByClassName('color');
     const controlColors = [];
     for (let i = 0; i < divsPalettes.length; i += 1) {
@@ -50,8 +50,8 @@ window.onload = function () {
       const deleteItems = document.getElementById(list[i].id);
       deleteItems.remove();
     }
-    let valueInput = document.querySelector('#board-size');
-    let value = parseInt(valueInput.value);
+    const valueInput = document.querySelector('#board-size');
+    const value = parseInt(valueInput.value);
     if (value < 5) {
       alert('Permitidos apenas números de 5 a 50.');
       value = 5;
@@ -65,27 +65,27 @@ window.onload = function () {
     const widthBoard = document.querySelector('#pixel-board');
     let dynamicWidth = 40 * (value + 0.5);
     dynamicWidth = dynamicWidth.toString();
-    widthBoard.style.width = dynamicWidth+"px";
-    let boards = value * value;
+    widthBoard.style.width = dynamicWidth + 'px';
+    const boards = value * value;
     for (let i = 1; i <= boards; i += 1) {
-      let divLine = document.getElementById('pixel-board');
-      let divColumn = document.createElement('div');
-      divColumn.id = "id-div-column-"+i;
-      divColumn.className = "pixel";
+      const divLine = document.getElementById('pixel-board');
+      const divColumn = document.createElement('div');
+      divColumn.id = 'id-div-column-' + i;
+      divColumn.className = 'pixel';
       divLine.appendChild(divColumn);
     }
   }
   
   function modifyColorSelected(color) {
-    let removeClass = document.querySelector('.selected');
-    removeClass.classList.remove("selected");
-    let selected = document.getElementById(color);
-    selected.classList.add("selected");
+    const removeClass = document.querySelector('.selected');
+    removeClass.classList.remove('selected');
+    const selected = document.getElementById(color);
+    selected.classList.add('selected');
   }
 
   function waitEvent() {
-    let eventColor = document.getElementById("color-palette");
-    eventColor.addEventListener("click", function(i){modifyColorSelected(i.target.id)}, false);
+    let eventColor = document.getElementById('color-palette');
+    eventColor.addEventListener('click', function(i){modifyColorSelected(i.target.id)}, false);
   }
   waitEvent();
 
@@ -96,8 +96,8 @@ window.onload = function () {
   }
 
   function waitEventToColor() {
-    let eventColor = document.getElementById("pixel-board");
-    eventColor.addEventListener("click", function(i){toDesign(i.target.id)}, false);
+    let eventColor = document.getElementById('pixel-board');
+    eventColor.addEventListener('click', function(i){toDesign(i.target.id)}, false);
   }
   waitEventToColor();
 
@@ -106,20 +106,20 @@ window.onload = function () {
     if (control === 'clear-board') {
       let creaningUp = document.querySelectorAll('.pixel');
       for (let i = 0; i < boards.length; i += 1) {
-        creaningUp[i].style.backgroundColor = "white";
+        creaningUp[i].style.backgroundColor = 'white';
       }
     }
   }
 
   function waitControls() {
-    let eventControl = document.getElementById("controls");
-    eventControl.addEventListener("click", function(i){controls(i.target.id)}, false);
+    let eventControl = document.getElementById('controls');
+    eventControl.addEventListener('click', function(i){controls(i.target.id)}, false);
   }
   waitControls();
 
   function waitRedefine() {
-    let redefineBoard = document.getElementById("generate-board");
-    redefineBoard.addEventListener("click", createPixelBoard, false);
+    let redefineBoard = document.getElementById('generate-board');
+    redefineBoard.addEventListener('click', createPixelBoard, false);
 
   }
   waitRedefine();
