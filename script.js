@@ -6,7 +6,7 @@ window.onload = function () {
     const controlColors = [];
     for (let i = 0; i < divsPalettes.length; i += 1) {
       if (i < 1) {
-        divsPalettes[0].style.backgroundColor = 'black';
+        divsPalettes[0].style.background = 'black';
         divsPalettes[0].id = 'black';
       } else {
         const n = Math.floor(Math.random() * colorsDefinitions.length);
@@ -30,7 +30,7 @@ window.onload = function () {
   function createInitialPixelBoard() {
     const value = 5;
     const widthBoard = document.querySelector('#pixel-board');
-    let dynamicWidth = 40 * (value + 0.5);
+    let dynamicWidth = 40 * (value + 1);
     dynamicWidth = dynamicWidth.toString();
     widthBoard.style.width = dynamicWidth + 'px';
     const boards = value * value;
@@ -63,7 +63,7 @@ window.onload = function () {
       window.location.reload(false);
     }
     const widthBoard = document.querySelector('#pixel-board');
-    let dynamicWidth = 40 * (value + 0.5);
+    let dynamicWidth = 40 * (value + 1);
     dynamicWidth = dynamicWidth.toString();
     widthBoard.style.width = dynamicWidth + 'px';
     const boards = value * value;
@@ -90,9 +90,11 @@ window.onload = function () {
   waitEvent();
 
   function toDesign(pixel) {
-    let colorSelected = document.querySelector('.selected');
-    let design = document.getElementById(pixel);
-    design.style.backgroundColor = colorSelected.id;
+    if (pixel !== 'pixel-board') {
+      let colorSelected = document.querySelector('.selected');
+      let design = document.getElementById(pixel);
+      design.style.backgroundColor = colorSelected.id;
+    }
   }
 
   function waitEventToColor() {
